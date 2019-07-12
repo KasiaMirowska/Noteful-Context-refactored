@@ -1,0 +1,15 @@
+.side-panel {
+    flex: 1;
+    /* border-right: 2px solid grey; */
+    text-align: left;
+    padding: 15px;
+}
+
+h2 {
+    font-family: 'Barriecito', cursive;
+    color: rgb(204, 80, 8);
+    padding-left: 20px;
+}
+ul {
+    list-style-type: none;
+}

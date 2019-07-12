@@ -1,0 +1,10 @@
+.folder {
+    border: 1px solid lightgray;
+    color: rgb(28, 151, 28);
+    background-color: white;
+    font-family: 'Raleway', sans-serif;
+    cursor: pointer;  
+}
+.highlighted {
+    background-color: rgb(221, 246, 198);
+}
