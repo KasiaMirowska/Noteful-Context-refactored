@@ -1,9 +1,9 @@
 import React from 'react';
 import './NoteList.css';
-import Note from '../Note/Note';
+import NoteListItem from '../NoteListItem/NoteListItem';
 
 export default function NoteList(props) {
-    console.log(props)
+   
     const filterNotesByFolder = () => {
         const notes = props.notes
         if(!props.match.params.folderId){
@@ -16,11 +16,8 @@ export default function NoteList(props) {
         })
       }
     
-    
- 
-    
     const notes = filterNotesByFolder().map(note => {
-        return <Note 
+        return <NoteListItem 
                 key={note.id}
                 id={note.id}
                 name={note.name}
@@ -35,6 +32,7 @@ export default function NoteList(props) {
         <div className='note-list'>
             <h2>Notes</h2>
             {notes}
+            <button className='add-note'>Add Note</button>
         </div>
     )
 }

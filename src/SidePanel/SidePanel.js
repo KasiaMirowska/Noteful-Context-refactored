@@ -17,6 +17,7 @@ export default function SidePanel(props) {
         <div className='side-panel'>
             <h2>Note Folders</h2>
             {folders}
+            <button type='button' className='side-button'>Add Folder</button>
         </div>
     )
 }

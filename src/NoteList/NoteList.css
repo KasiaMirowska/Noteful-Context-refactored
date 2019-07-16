@@ -1,9 +1,16 @@
 .note-list {
-    flex: 4;
+    flex: 2;
     
 }
 
 h2 {
     font-family: 'Barriecito', cursive;
     color: rgb(204, 80, 8);
+}
+.add-note {
+    width: 30%;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 15px;
 }

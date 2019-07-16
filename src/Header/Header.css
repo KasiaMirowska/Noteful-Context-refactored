@@ -3,7 +3,6 @@ header {
     color: orange;
     height: 120px;
     font-family: 'Barriecito', cursive;
-    border-bottom-width: 3px red;
     text-align: left;
     
     font-size: 30px;
@@ -19,3 +18,5 @@ hr {
 h1 {
     padding-left: 20%;
 }
+
+

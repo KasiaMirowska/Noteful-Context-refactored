@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
 import Data from './dummyData'
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import Header from './Header/Header';
 import SidePanel from './SidePanel/SidePanel';
 import NoteList from './NoteList/NoteList';
-import Note from './Note/Note';
+import OpenNote from './OpenNote/OpenNote';
+import ONSidePanel from './OpenNoteSidePanel/ONSidePanel';
+
 
 export default class App extends React.Component {
   constructor(props){
@@ -25,22 +27,25 @@ export default class App extends React.Component {
 
     return (
       <div className="App">
-       <Header />
+        <Link to={'/'} className='link'>
+          <Header />
+        </Link>
         <div className='main'>
+
           
-          //home-page view:
-          <Route path='/' render={() => <SidePanel folders={this.state.folders} highLight={this.state.highLightedFolder} />} />
+          
+          <Route exact path='/' render={() => <SidePanel folders={this.state.folders} highLight={this.state.highLightedFolder} />} />
           <Route exact path='/' render={(props) => <NoteList {...props} notes={this.state.notes} />} />
           
           
-          //folder selection note view:
-          <Route exact path='/folder' render={(props) => <NoteList {...props} notes={this.state.notes} />} />
+        
+          <Route path='/folder' render={() => <SidePanel folders={this.state.folders} highLight={this.state.highLightedFolder} />} />
           <Route exact path='/folder/:folderId' render={(props) => <NoteList {...props} notes={this.state.notes}/>} />
+          
 
-
-          //open note view:
-          <Route exact path='/note' render={(props) => <NoteList {...props} notes={this.state.notes} />} />
-          <Route exact path='/note/:noteId' render={(props) => <Note {...props} notes={this.state.notes} />} /> 
+         
+          <Route path='/openNote/:openNoteId' render={(props) => <ONSidePanel {...props} folders={this.state.folders} notes={this.state.notes} />} />
+          <Route path='/openNote/:openNoteId' render={(props) => <OpenNote {...props} notes={this.state.notes} />} /> 
           
         </div>
         

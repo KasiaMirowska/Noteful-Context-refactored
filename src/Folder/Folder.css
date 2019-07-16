@@ -1,9 +1,12 @@
 .folder {
+    width: 40%;
     border: 1px solid lightgray;
     color: rgb(28, 151, 28);
     background-color: white;
     font-family: 'Raleway', sans-serif;
     cursor: pointer;  
+    margin:10px;
+    right: 0;
 }
 .highlighted {
     background-color: rgb(221, 246, 198);

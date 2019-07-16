@@ -1,7 +1,12 @@
 .App {
   text-align: center;
+  color: grey;
 }
 
 .main {
   display: flex;
+}
+
+.link {
+  text-decoration: none;
 }
