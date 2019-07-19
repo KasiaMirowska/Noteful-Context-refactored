@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Data from './dummyData'
+import NotefulContext from './NotefulContext';
 import { Route, Link } from 'react-router-dom';
 import Header from './Header/Header';
 import SidePanel from './SidePanel/SidePanel';
@@ -15,18 +16,17 @@ export default class App extends React.Component {
     this.state = {
       folders: Data.folders,
       notes: Data.notes, 
-      
-      highLightedFolder: null,
     }
   }
 
- 
-
-  
   render(){
-
+    const contextValue = {
+      folders: this.state.folders,
+      notes: this.state.notes,
+    }
     return (
       <div className="App">
+        <NotefulContext.Provider value={contextValue}>
         <Link to={'/'} className='link'>
           <Header />
         </Link>
@@ -34,22 +34,22 @@ export default class App extends React.Component {
 
           
           
-          <Route exact path='/' render={() => <SidePanel folders={this.state.folders} highLight={this.state.highLightedFolder} />} />
-          <Route exact path='/' render={(props) => <NoteList {...props} notes={this.state.notes} />} />
+          <Route exact path='/' component={SidePanel} />
+          <Route exact path='/' component={NoteList} />
           
           
         
-          <Route path='/folder' render={() => <SidePanel folders={this.state.folders} highLight={this.state.highLightedFolder} />} />
-          <Route exact path='/folder/:folderId' render={(props) => <NoteList {...props} notes={this.state.notes}/>} />
+          <Route path='/folder' component={SidePanel} />
+          <Route exact path='/folder/:folderId' component={NoteList} />
           
 
          
-          <Route path='/openNote/:openNoteId' render={(props) => <ONSidePanel {...props} folders={this.state.folders} notes={this.state.notes} />} />
-          <Route path='/openNote/:openNoteId' render={(props) => <OpenNote {...props} notes={this.state.notes} />} /> 
+          <Route path='/openNote/:openNoteId' component={ONSidePanel} />
+          <Route path='/openNote/:openNoteId' component={OpenNote} /> 
           
         </div>
         
-       
+        </NotefulContext.Provider>
       </div>
     );
   }

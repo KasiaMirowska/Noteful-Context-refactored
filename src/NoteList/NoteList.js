@@ -1,22 +1,26 @@
 import React from 'react';
+import NotefulContext from '../NotefulContext';
 import './NoteList.css';
 import NoteListItem from '../NoteListItem/NoteListItem';
 
-export default function NoteList(props) {
+export default class NoteList extends React.Component {
+    static contextType = NotefulContext;
    
-    const filterNotesByFolder = () => {
-        const notes = props.notes
-        if(!props.match.params.folderId){
+    filterNotesByFolder = () => {
+        const notes = this.context.notes
+        if(!this.props.match.params.folderId){
            return notes; 
         }
         return notes.filter((note) => {
-          if(note.folderId === props.match.params.folderId) {
+          if(note.folderId === this.props.match.params.folderId) {
             return note;
           }
         })
       }
     
-    const notes = filterNotesByFolder().map(note => {
+    render(){
+      console.log(this.context)
+      const notes = this.filterNotesByFolder().map(note => {
         return <NoteListItem 
                 key={note.id}
                 id={note.id}
@@ -26,13 +30,14 @@ export default function NoteList(props) {
                 content={note.content}
                 />
     })
-    
-  
-    return (
+
+      return (
         <div className='note-list'>
             <h2>Notes</h2>
             {notes}
             <button className='add-note'>Add Note</button>
         </div>
     )
+    }
+    
 }
