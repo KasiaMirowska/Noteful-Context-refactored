@@ -28,6 +28,7 @@ export default class NoteList extends React.Component {
                 modified={note.modified}
                 folderId={note.folderId}
                 content={note.content}
+                // deleteNoteRequest={this.context.deleteNoteRequest}
                 />
     })
 
