@@ -2,34 +2,17 @@ import React from 'react';
 import NotefulContext from '../NotefulContext'
 import './NoteListItem.css';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-// function deleteNoteRequest(noteId, callback) {
-//     const notesURL = 'http://localhost:9090/notes';
-//     fetch(notesURL + `/${noteId}/`, {
-//         method: 'DELETE'
-//     })
-//     .then(res => {
-//         if(!res.ok) {
-//             return res.json().then(error => {
-//                 throw error
-//             })
-//         }
-//         return res.json()
-//     })
-//     .then(data => {
-//         return callback(noteId);
-//     })
-//     .catch(err => {
-//         console.error(err);
-//     })
-// }
 
 export default function NoteListItem(props) {
+    // console.log(props.modified)
+    // const dateStr = props.modified.getFullYear()+'-' + (props.modified.getMonth()+1) + '-'+props.modified.getDate();
    
+  
     return (
         <NotefulContext.Consumer>
             {(context) => {
-                console.log(context)
                 return (
             <div className='note'>
                 <ul >
@@ -55,3 +38,13 @@ export default function NoteListItem(props) {
         </NotefulContext.Consumer>
     )
 }
+
+NoteListItem.propTypes = {
+    notes: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+      folderId: PropTypes.string.isRequired,
+      modified: PropTypes.instanceOf(Date),
+    }))
+  }

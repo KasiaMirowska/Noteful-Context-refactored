@@ -2,6 +2,8 @@ import React from 'react';
 import NotefulContext from '../NotefulContext';
 import './NoteList.css';
 import NoteListItem from '../NoteListItem/NoteListItem';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export default class NoteList extends React.Component {
     static contextType = NotefulContext;
@@ -19,7 +21,6 @@ export default class NoteList extends React.Component {
       }
     
     render(){
-      console.log(this.context)
       const notes = this.filterNotesByFolder().map(note => {
         return <NoteListItem 
                 key={note.id}
@@ -28,7 +29,6 @@ export default class NoteList extends React.Component {
                 modified={note.modified}
                 folderId={note.folderId}
                 content={note.content}
-                // deleteNoteRequest={this.context.deleteNoteRequest}
                 />
     })
 
@@ -36,9 +36,19 @@ export default class NoteList extends React.Component {
         <div className='note-list'>
             <h2>Notes</h2>
             {notes}
+            <Link to='/newNote'>
             <button className='add-note'>Add Note</button>
+            </Link>
         </div>
     )
     }
     
+}
+NoteList.propTypes = {
+  notes: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    folderId: PropTypes.string.isRequired,
+  }))
 }

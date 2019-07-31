@@ -1,46 +1,19 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import NotefulContext from '../NotefulContext';
 import './OpenNote.css'
-
+import PropTypes from 'prop-types';
 
 
 export default class OpenNote extends React.Component {
     static contextType = NotefulContext;
 
-    
-    // deleteNoteRequest = (noteId, callback) => {
-    //     const notesURL = 'http://localhost:9090/notes';
-    //     fetch(notesURL + `/${noteId}/`, {
-    //         method: 'DELETE'
-    //     })
-    //     .then(res => {
-    //         if(!res.ok) {
-    //             return res.json().then(error => {
-    //                 throw error
-    //             })
-    //         }
-    //         return res.json()
-    //     })
-    //     .then(data => {
-    //         callback(noteId)
-    //         this.props.history.push('/')
-    //     })
-    //     .catch(err => {
-    //         console.error(err);
-    //     })
-    // }
-
     render() {
-        // const contextValue = {
-        //     deleteNoteRequest: this.deleteNoteRequest,
-        // }
-    
         const note = this.context.notes.find(note => note.id === this.props.match.params.openNoteId);
         if(note){
             return (
                 <div>
                     <h2>Notes</h2>
-                        {/* <NotefulContext.Provider value={contextValue}> */}
                         <div className='open-view'>
                             <h3>{note.name}</h3>
                             {note.modified}       
@@ -52,15 +25,24 @@ export default class OpenNote extends React.Component {
                             </button>
                             <p className='content'>{note.content}</p>
                         </div> 
-                        {/* </NotefulContext.Provider>    */}
                 </div>
                                
                 
             );
         } else {
-            return null;
+            return <Redirect to='/'/>;
         }
     
     }
     
 }
+OpenNote.propTypes = {
+    notes: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+      folderId: PropTypes.string.isRequired,
+      modified: PropTypes.instanceOf(Date),
+    })),
+    deleteNote: PropTypes.func,
+  }

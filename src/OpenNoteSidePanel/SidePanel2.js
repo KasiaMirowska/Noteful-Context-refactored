@@ -2,11 +2,14 @@ import React from 'react';
 import NotefulContext from '../NotefulContext';
 import './ONSidePanel.css'
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export default class ONSidePanel extends React.Component {
+
+
+export default class SidePanel2 extends React.Component {
     static contextType = NotefulContext;
+    
     render() {
-        console.log(this.context.notes, this.props.match)
         const note = this.context.notes.find(note => note.id === this.props.match.params.openNoteId);
         if(note){
             const openFolderId = note.folderId;
@@ -20,7 +23,7 @@ export default class ONSidePanel extends React.Component {
                         <h3>{openFolder.name}</h3>
                     </Link>
                 </div>  
-                <button className='side-button'>Go back</button>    
+                <button className='side-button' onClick={() => this.props.history.goBack()}>Go back</button>    
             </div>
         );
     } else {
@@ -28,4 +31,18 @@ export default class ONSidePanel extends React.Component {
     }
 }
     
+}
+
+SidePanel2.propTypes = {
+    folders: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+    })),
+    notes: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        content: PropTypes.string.isRequired,
+        folderId: PropTypes.string.isRequired,
+    })),
+    history: PropTypes.object
 }
