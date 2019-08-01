@@ -46,7 +46,9 @@ export default class NewNoteForm extends React.Component {
         .then(data => {
             name.value = ''
             content.value = ''
-            this.state.folderSelection = null
+            this.setstate({
+                folderSelection: null
+            })
             this.context.addNewNote(data)
             this.props.history.push('/')
         })

@@ -10,7 +10,7 @@ import SidePanel2 from './OpenNoteSidePanel/SidePanel2';
 import SidePanel3 from './SidePanel3/SidePanel3';
 import NewFolderForm from './NewFolderForm/NewFolderForm';
 import NewNoteForm from './NewNote/NewNoteForm';
-
+import API_service from './API_service';
 
 export default class App extends React.Component {
   constructor(props){
@@ -59,44 +59,10 @@ export default class App extends React.Component {
 }
   
   componentDidMount() {
-    const foldersURL = 'http://localhost:9090/folders/';
-    const notesURL = 'http://localhost:9090/notes/';
-    fetch(foldersURL)
-    .then(res => {
-      if(!res.ok){
-        throw new Error('something went wrong')
-      }
-      return res;
-    })
-    .then(res => res.json())
+    API_service.getFoldersData()
     .then(serverData => {
       this.setState({
         folders: serverData
-      })
-    })
-    .catch(err => {
-      this.setState({
-          error: err.message,
-      })
-    })
-
-    fetch(notesURL)
-    .then(res => {
-      if(!res.ok){
-        throw new Error('something went wrong')
-      }
-      return res;
-    })
-    .then(res => res.json())
-    .then(serverData => {
-      console.log(serverData)
-      this.setState({
-        notes: serverData
-      })
-    })
-    .catch(err => {
-      this.setState({
-          error: err.message,
       })
     })
   }
