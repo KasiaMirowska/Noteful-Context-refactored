@@ -6,10 +6,10 @@ import PropTypes from 'prop-types';
 
 
 export default function NoteListItem(props) {
-    // console.log(props.modified)
-    // const dateStr = props.modified.getFullYear()+'-' + (props.modified.getMonth()+1) + '-'+props.modified.getDate();
-   
-  
+    
+    let modifiedDate = new Date(props.modified)
+    modifiedDate = modifiedDate.getFullYear()+'-' +  modifiedDate.getMonth()+1 + '-'+  modifiedDate.getDate();
+    
     return (
         <NotefulContext.Consumer>
             {(context) => {
@@ -20,7 +20,7 @@ export default function NoteListItem(props) {
                         <Link to= {`/openNote/${props.id}`} className="link"> 
                             <h3>{props.name}</h3>
                         </Link>
-                        {props.modified}
+                        {modifiedDate}
                         <br />
                         <button 
                             className='delete-button' 

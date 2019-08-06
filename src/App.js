@@ -10,7 +10,10 @@ import SidePanel2 from './OpenNoteSidePanel/SidePanel2';
 import SidePanel3 from './SidePanel3/SidePanel3';
 import NewFolderForm from './NewFolderForm/NewFolderForm';
 import NewNoteForm from './NewNote/NewNoteForm';
-import API_service from './API_service';
+import APIcalls from './API_service';
+import Errors from './Errors/Errors';
+
+
 
 export default class App extends React.Component {
   constructor(props){
@@ -18,7 +21,6 @@ export default class App extends React.Component {
     this.state = {
       folders: [],
       notes: [],
-      error: null, 
     }
   }
   
@@ -37,32 +39,29 @@ export default class App extends React.Component {
   }
 
   deleteNoteRequest = (noteId, callback) => {
-    const notesURL = 'http://localhost:9090/notes';
-    fetch(notesURL + `/${noteId}/`, {
-        method: 'DELETE'
-    })
-    .then(res => {
-        if(!res.ok) {
-            return res.json().then(error => {
-                throw error
-            })
-        }
-        return res.json()
-    })
+    APIcalls.deleteNoteRequest(noteId, callback)
     .then(data => {
-        callback(noteId)
-        
-    })
-    .catch(err => {
-        console.error(err);
-    })
-}
+      callback(noteId) 
+  })
+    // .catch(err => {
+    //   this.setState({
+    //     error: err.message
+    //   })
+    // })
+  }  
   
   componentDidMount() {
-    API_service.getFoldersData()
+    APIcalls.getFoldersData()
     .then(serverData => {
       this.setState({
         folders: serverData
+      })
+    })
+    
+    APIcalls.getNotesData()
+    .then(serverData => {
+      this.setState({
+        notes: serverData
       })
     })
   }
@@ -100,7 +99,7 @@ export default class App extends React.Component {
             <Header />
           </Link>
           <div className='main'>
-
+            <Errors>
             <Route exact path='/' component={SidePanel} />
             <Route exact path='/' component={NoteList} />
             
@@ -115,7 +114,7 @@ export default class App extends React.Component {
 
             <Route path='/newNote' component={SidePanel3} />
             <Route path='/newNote' component={NewNoteForm} />
-            
+            </Errors>
           </div>
           
         </NotefulContext.Provider>

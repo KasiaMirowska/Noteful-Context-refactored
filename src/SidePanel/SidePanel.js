@@ -15,7 +15,6 @@ export default class SidePanel extends React.Component {
                     key={folder.id}
                     id={folder.id}
                     name={folder.name}
-                    amount={this.context.notes.length}
                     />
         })
         return (

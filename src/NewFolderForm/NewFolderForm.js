@@ -1,6 +1,7 @@
 import React from 'react';
 import NotefulContext from '../NotefulContext';
 import cuid from 'cuid';
+import APIcalls from '../API_service';
 
 
 export default class NewFolderForm extends React.Component {
@@ -16,31 +17,14 @@ export default class NewFolderForm extends React.Component {
             name: name.value,
             id: cuid(),
         }
-        console.log(newFolder)
-        const url = `http://localhost:9090/folders/`
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(newFolder),
-            headers: {
-                'content-type': 'application/json',
-              }
-        })
-        .then(res => {
-            if(!res.ok){
-                return res.json().then(error => {
-                    throw new Error('try again, we have a connection problem')
-                })
-            }
-            return res.json()
-        })
+       
+        APIcalls.newFolder(newFolder)
         .then(data => {
             name.value = ''
             this.context.addNewFolder(data)
             this.props.history.push('/')
         })
-        .catch(error => {
-            this.setState({error})
-        })
+        
         
     }
 

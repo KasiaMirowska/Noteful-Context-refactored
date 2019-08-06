@@ -1,6 +1,7 @@
 import React from 'react';
 import NotefulContext from '../NotefulContext';
 import cuid from 'cuid';
+import APIcalls from '../API_service';
 
 export default class NewNoteForm extends React.Component {
     static contextType = NotefulContext
@@ -26,35 +27,18 @@ export default class NewNoteForm extends React.Component {
             folderId: this.state.folderSelection,
             modified: new Date().toDateString(),
         }
-        console.log(newNote)
-        const url = `http://localhost:9090/notes/`
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(newNote),
-            headers: {
-                'content-type': 'application/json',
-              }
-        })
-        .then(res => {
-            if(!res.ok){
-                return res.json().then(error => {
-                    throw new Error('try again, we have a connection problem')
-                })
-            }
-            return res.json()
-        })
+        
+        APIcalls.newNote(newNote)
         .then(data => {
             name.value = ''
             content.value = ''
-            this.setstate({
+            this.setState({
                 folderSelection: null
             })
             this.context.addNewNote(data)
             this.props.history.push('/')
         })
-        .catch(error => {
-            this.setState({error})
-        })
+        
     }
 
     render(){
