@@ -43,11 +43,6 @@ export default class App extends React.Component {
     .then(data => {
       callback(noteId) 
   })
-    // .catch(err => {
-    //   this.setState({
-    //     error: err.message
-    //   })
-    // })
   }  
   
   componentDidMount() {
@@ -95,28 +90,28 @@ export default class App extends React.Component {
       <div className="App">
         <h3>{this.state.error}</h3>
         <NotefulContext.Provider value={contextValue}>
-          <Link to={'/'} className='link'>
-            <Header />
-          </Link>
-          <div className='main'>
-            <Errors>
-            <Route exact path='/' component={SidePanel} />
-            <Route exact path='/' component={NoteList} />
-            
-            <Route path='/folder' component={SidePanel} />
-            <Route exact path='/folder/:folderId' component={NoteList} />
-        
-            <Route path='/openNote/:openNoteId' component={SidePanel2} />
-            <Route path='/openNote/:openNoteId' component={OpenNote} />
-
-            <Route path='/newFolder' component={SidePanel3} />
-            <Route path='/newFolder' component={NewFolderForm} /> 
-
-            <Route path='/newNote' component={SidePanel3} />
-            <Route path='/newNote' component={NewNoteForm} />
-            </Errors>
-          </div>
+          <Errors>
+            <Link to={'/'} className='link'>
+              <Header />
+            </Link>
+            <div className='main'>
+           
+              <Route exact path='/' component={SidePanel} />
+              <Route exact path='/' component={NoteList} />
+              
+              <Route path='/folder' component={SidePanel} />
+              <Route exact path='/folder/:folderId' component={NoteList} />
           
+              <Route path='/openNote/:openNoteId' component={SidePanel2} />
+              <Route path='/openNote/:openNoteId' component={OpenNote} />
+
+              <Route path='/newFolder' component={SidePanel3} />
+              <Route path='/newFolder' component={NewFolderForm} /> 
+
+              <Route path='/newNote' component={SidePanel3} />
+              <Route path='/newNote' component={NewNoteForm} />
+            </div>
+          </Errors> 
         </NotefulContext.Provider>
       </div>
     );

@@ -21,14 +21,15 @@ export default class NoteList extends React.Component {
       }
     
     render(){
+      console.log(this.props)
       const notes = this.filterNotesByFolder().map(note => {
         return <NoteListItem 
-                key={note.id}
-                id={note.id}
-                name={note.name}
-                modified={note.modified}
-                folderId={note.folderId}
-                content={note.content}
+                  key={note.id}
+                  id={note.id}
+                  name={note.name}
+                  modified={note.modified}
+                  folderId={note.folderId}
+                  content={note.content}
                 />
     })
 
@@ -37,7 +38,7 @@ export default class NoteList extends React.Component {
             <h2>Notes</h2>
             {notes}
             <Link to='/newNote'>
-            <button className='add-note'>Add Note</button>
+              <button className='add-note'>Add Note</button>
             </Link>
         </div>
     )

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoteListItem component renders the UI as expected 1`] = `
+<div
+  className="note"
+>
+  <ul>
+    <li
+      id="id"
+    >
+      <a
+        className="link"
+        href="/openNote/id"
+        onClick={[Function]}
+      >
+        <h3>
+          a name
+        </h3>
+      </a>
+      NaN-NaN1-NaN
+      <br />
+      <button
+        className="delete-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Delete Note
+      </button>
+    </li>
+  </ul>
+</div>
+`;

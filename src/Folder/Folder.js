@@ -25,6 +25,7 @@ export default class Folder extends React.Component {
       }
        
     render(){
+        console.log(this.props)
        return (
             <div className='folder'>
                 <ul className='folder-list'>

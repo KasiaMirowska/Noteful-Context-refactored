@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidePanel component renders UI with no folders 1`] = `
+<div
+  className="folder"
+>
+  <h2>
+    Note Folders
+  </h2>
+  <a
+    href="/newFolder"
+    onClick={[Function]}
+  >
+    <button
+      className="side-button"
+      type="button"
+    >
+      Add Folder
+    </button>
+  </a>
+</div>
+`;
+
+exports[`SidePanel component renders the UI as expected 1`] = `
+<div
+  className="folder"
+>
+  <h2>
+    Note Folders
+  </h2>
+  <a
+    href="/newFolder"
+    onClick={[Function]}
+  >
+    <button
+      className="side-button"
+      type="button"
+    >
+      Add Folder
+    </button>
+  </a>
+</div>
+`;

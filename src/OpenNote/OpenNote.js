@@ -9,6 +9,7 @@ export default class OpenNote extends React.Component {
     static contextType = NotefulContext;
 
     render() {
+        console.log(this.props)
         const note = this.context.notes.find(note => note.id === this.props.match.params.openNoteId);
         if(note){
             return (

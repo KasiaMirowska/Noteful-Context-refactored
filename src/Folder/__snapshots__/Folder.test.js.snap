@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Folder component renders the UI as expected 1`] = `
+<div
+  className="folder"
+>
+  <ul
+    className="folder-list"
+  >
+    <li>
+      <a
+        className="link"
+        href="/folder/undefined"
+        onClick={[Function]}
+      >
+        <h3 />
+      </a>
+      <p>
+        0
+      </p>
+      <button
+        onClick={[Function]}
+      >
+        Delete folder
+      </button>
+    </li>
+  </ul>
+</div>
+`;

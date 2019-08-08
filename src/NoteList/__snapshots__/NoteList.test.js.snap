@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoteList component renders the UI as expected 1`] = `
+<div
+  className="note-list"
+>
+  <h2>
+    Notes
+  </h2>
+  <a
+    href="/newNote"
+    onClick={[Function]}
+  >
+    <button
+      className="add-note"
+    >
+      Add Note
+    </button>
+  </a>
+</div>
+`;

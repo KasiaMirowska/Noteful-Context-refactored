@@ -10,6 +10,7 @@ export default class SidePanel extends React.Component {
     static contextType = NotefulContext;
 
     render(){
+        console.log(this.props)
         const folders = this.context.folders.map(folder => {
             return <Folder 
                     key={folder.id}
