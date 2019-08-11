@@ -17,18 +17,18 @@ describe('SidePanel3', () => {
         const div = document.createElement('div');
         ReactDom.render(<SidePanel3 {...props}/>, div);
         ReactDom.unmountComponentAtNode(div);
-    })
+    });
 
     it('renders the UI as expected', () => {
         const sidePanel3 = renderer.create(<SidePanel3 {...props}/>);
 
         expect(sidePanel3.toJSON()).toMatchSnapshot();
-    })
+    });
 
     it('goes back on click', () => {
-        const onClickFn = {...props}
-        const wrapper = shallow(<SidePanel3 onClick={onClickFn}/>);
+        const onClickFn = props.history.goBack;
+        const wrapper = shallow(<SidePanel3 {...props}/>);
         wrapper.find('button').simulate('click');
-        expect(onClickFn.mock.calls[0]).toEqual('/')
-    })
-})
+        expect(onClickFn).toBeCalled();
+    });
+});

@@ -11,12 +11,12 @@ describe('OpenNote component', () => {
         const div = document.createElement('div')
         ReactDOM.render(<BrowserRouter><OpenNote match={{params:{openNoteId : 'some id'}}}/></BrowserRouter>, div);
         ReactDOM.unmountComponentAtNode(div);
-    })
+    });
 
     it('renders the UI as expected', () => {
         const openNote = renderer.create(<BrowserRouter><OpenNote match={{params:{openNoteId : 'some id'}}}/></BrowserRouter>);
         
         expect(openNote.toJSON()).toMatchSnapshot();
         
-    })
-})
+    });
+});

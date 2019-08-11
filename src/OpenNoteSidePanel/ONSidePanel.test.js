@@ -14,32 +14,15 @@ describe('SidePanel2', () => {
             params: {openNoteId: 'id'}
         }
     }
-    // it ('renders without crashing', () => {
-    //     const div = document.createElement('div');
-    //     ReactDom.render(<SidePanel2 {...props} />, div);
-    //     ReactDom.unmountComponentAtNode(div);
-    // })
+    it ('renders without crashing', () => {
+        const div = document.createElement('div');
+        ReactDom.render(<SidePanel2 {...props} />, div);
+        ReactDom.unmountComponentAtNode(div);
+    });
 
-    // it('renders the UI as expected', () => {
-    //     const sidePanel3 = renderer.create(<SidePanel2 {...props}/>);
+    it('renders the UI as expected', () => {
+        const sidePanel3 = renderer.create(<SidePanel2 {...props}/>);
 
-    //     expect(sidePanel3.toJSON()).toMatchSnapshot();
-    // })
-
-    it('goes back on click', () => {
-        
-        // const onClickFn = props.history.goBack.jest.fn()
-        const wrapper = shallow(
-            // <NotefulContext.Provider value={{ 
-            //     notes: [{ id: 'test-note-id', folderId: 'test-folder-id' }],
-            //     folders: [{ id: 'test-folder-id', name: 'Important' }] 
-            // }}>
-                <SidePanel2 {...props} />
-            // </NotefulContext.Provider>
-        );
-        console.log(wrapper.getElements(), 'SSSSSSSSSS')
-        expect(wrapper.dive().find('button')).toBe(true);
-        // wrapper.find('button').simulate('click');
-        // expect(onClickFn.mock.calls[0]).toEqual('/')
-    })
-})
+        expect(sidePanel3.toJSON()).toMatchSnapshot();
+    });
+});

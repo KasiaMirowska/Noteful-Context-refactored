@@ -9,13 +9,12 @@ describe('NoteListItem component', () => {
         const div = document.createElement('div');
         ReactDOM.render(<BR><NoteListItem id = 'id' name='a name' modified='a date' folderId=' folderId' content='some content'/></BR>, div);
         ReactDOM.unmountComponentAtNode(div);
-    })
+    });
 
     it('renders the UI as expected', () => {
         expect(renderer.create(<BR><NoteListItem id ='id' name='a name' modified='a date' folderId=' folderId' content='some content'/></BR>).toJSON())
         .toMatchSnapshot();
-    })
+    });
+});
 
-   
-})
 

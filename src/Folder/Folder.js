@@ -54,5 +54,4 @@ Folder.propTypes = {
         name: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
     })),
-    deleteFolder: PropTypes.func,
 }

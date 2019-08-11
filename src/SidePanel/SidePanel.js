@@ -5,12 +5,10 @@ import Folder from '../Folder/Folder';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-
 export default class SidePanel extends React.Component {
     static contextType = NotefulContext;
 
     render(){
-        console.log(this.props)
         const folders = this.context.folders.map(folder => {
             return <Folder 
                     key={folder.id}
@@ -21,7 +19,9 @@ export default class SidePanel extends React.Component {
         return (
             <div className='folder'>
                 <h2>Note Folders</h2>
+                <React.Fragment>
                 {folders}
+                </React.Fragment>
                 <Link to='/newFolder'>
                     <button type='button' className='side-button'>
                         Add Folder
@@ -29,13 +29,31 @@ export default class SidePanel extends React.Component {
                 </Link>
             </div>
         )
-    }
-    
-}
+    };  
+};
 
 SidePanel.propTypes = {
-    folders: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-    }))
+    history: PropTypes.arrayOf(PropTypes.shape({
+        length: PropTypes.number,
+        action: PropTypes.string,
+        location: PropTypes.object,
+        createHref: PropTypes.func,
+        push: PropTypes.func,
+    })),
+    location: PropTypes.arrayOf(PropTypes.shape({
+        pathname: PropTypes.string,
+        search: PropTypes.string,
+        hash: PropTypes.string,
+        key: PropTypes.string,
+    })),
+    match: PropTypes.arrayOf(PropTypes.shape({
+        path: PropTypes.string,
+        url: PropTypes.string,
+        isExact: PropTypes.boolean,
+        params : PropTypes.arrayOf(PropTypes.shape({
+            path: PropTypes.string,
+            url: PropTypes.string,
+        }))
+    })),
 }
+

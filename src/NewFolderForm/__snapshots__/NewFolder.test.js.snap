@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewFolder comsponent renders UI as expected 1`] = `
+<div>
+  <h2>
+    Create a folder
+  </h2>
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      htmlFor="folder-name"
+    >
+      Name
+    </label>
+    <input
+      aria-label="folder-name"
+      aria-required="true"
+      id="name"
+      name="name"
+      placeholder="enter name"
+      type="text"
+    />
+    <button
+      type="submit"
+    >
+      Add Folder
+    </button>
+  </form>
+</div>
+`;

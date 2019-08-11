@@ -12,7 +12,7 @@ import NewFolderForm from './NewFolderForm/NewFolderForm';
 import NewNoteForm from './NewNote/NewNoteForm';
 import APIcalls from './API_service';
 import Errors from './Errors/Errors';
-
+import PropTypes from 'prop-types';
 
 
 export default class App extends React.Component {
@@ -76,7 +76,6 @@ export default class App extends React.Component {
 
   
   render(){
-    
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,
@@ -86,14 +85,15 @@ export default class App extends React.Component {
       deleteFolder: this.deleteFolder,
       addNewNote: this.addNewNote,
     }
+
     return (
-      <div className="App">
-        <h3>{this.state.error}</h3>
+      <main className="App">
         <NotefulContext.Provider value={contextValue}>
           <Errors>
-            <Link to={'/'} className='link'>
+            <Link to={'/'} className='link' aria-label="Noteful">
               <Header />
             </Link>
+            <h3 aria-label='error-message'>{this.state.error}</h3>
             <div className='main'>
            
               <Route exact path='/' component={SidePanel} />
@@ -113,10 +113,32 @@ export default class App extends React.Component {
             </div>
           </Errors> 
         </NotefulContext.Provider>
-      </div>
+      </main>
     );
-  }
-  
+  };
+};
+
+App.propTypes = {
+  history: PropTypes.arrayOf(PropTypes.shape({
+      length: PropTypes.number,
+      action: PropTypes.string,
+      location: PropTypes.object,
+      createHref: PropTypes.func,
+      push: PropTypes.func,
+  })),
+  location: PropTypes.arrayOf(PropTypes.shape({
+      pathname: PropTypes.string,
+      search: PropTypes.string,
+      hash: PropTypes.string,
+      key: PropTypes.string,
+  })),
+  match: PropTypes.arrayOf(PropTypes.shape({
+      path: PropTypes.string,
+      url: PropTypes.string,
+      isExact: PropTypes.boolean,
+      params : PropTypes.arrayOf(PropTypes.shape({
+          path: PropTypes.string,
+          url: PropTypes.string,
+      }))
+  })),
 }
-
-

@@ -7,29 +7,17 @@ import { BrowserRouter as BR } from 'react-router-dom';
 
 
 describe('SidePanel component', () => {
-    const props = {
-        folders: [{
-            name: 'some name',
-            id: 'id',
-        }]
-    }
+    
     it ('SidePanel renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<BR><SidePanel {...props}/></BR>, div)
+        ReactDOM.render(<BR><SidePanel /></BR>, div)
     })
 
     it('renders the UI as expected', () => {
-        const sidePanel = renderer.create(<BR><SidePanel {...props}/></BR>);
+        const sidePanel = renderer.create(<BR><SidePanel /></BR>);
 
         expect(sidePanel.toJSON()).toMatchSnapshot();
 
     })
 
-    it('renders UI with no folders', () => {
-        const sidePanel = renderer.create(<BR><SidePanel props={props.folders.length === 0}/></BR>)
-        
-        expect(sidePanel.toJSON()).toMatchSnapshot();
-    })
-    
-    
 })

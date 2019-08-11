@@ -2,7 +2,7 @@ import React from 'react';
 import NotefulContext from '../NotefulContext';
 import cuid from 'cuid';
 import APIcalls from '../API_service';
-
+import PropTypes from 'prop-types';
 
 export default class NewFolderForm extends React.Component {
     static contextType = NotefulContext;
@@ -39,6 +39,8 @@ export default class NewFolderForm extends React.Component {
                         type='text'
                         name='name'
                         id='name'
+                        aria-label='folder-name'
+                        aria-required='true'
                         placeholder='enter name'>
                     </input>
                     <button type='submit'>Add Folder</button>
@@ -46,4 +48,29 @@ export default class NewFolderForm extends React.Component {
             </div>
         )
     }
+}
+
+NewFolderForm.propTypes = {
+    history: PropTypes.arrayOf(PropTypes.shape({
+        length: PropTypes.number,
+        action: PropTypes.string,
+        location: PropTypes.object,
+        createHref: PropTypes.func,
+        push: PropTypes.func,
+    })),
+    location: PropTypes.arrayOf(PropTypes.shape({
+        pathname: PropTypes.string,
+        search: PropTypes.string,
+        hash: PropTypes.string,
+        key: PropTypes.string,
+    })),
+    match: PropTypes.arrayOf(PropTypes.shape({
+        path: PropTypes.string,
+        url: PropTypes.string,
+        isExact: PropTypes.boolean,
+        params : PropTypes.arrayOf(PropTypes.shape({
+            path: PropTypes.string,
+            url: PropTypes.string,
+        }))
+    })),
 }

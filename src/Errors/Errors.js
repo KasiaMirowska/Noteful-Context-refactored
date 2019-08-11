@@ -14,6 +14,7 @@ export default class Errors extends React.Component {
 
     render(){
         if (this.state.hasError === true) {
+            console.log('HERE????????')
             return(
                 <div className='errors'>
                    <p>We apologize for inconvienience but there is an error! </p>

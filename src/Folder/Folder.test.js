@@ -18,18 +18,18 @@ describe('Folder component', () => {
 
         ReactDOM.render(<BR><Folder {...props} /></BR>, div);
         ReactDOM.unmountComponentAtNode(div);
-    })
+    });
 
     it('renders the UI as expected', ()=>{
         const folder = renderer.create(<BR><Folder {...props}/></BR>);
 
         expect(folder.toJSON()).toMatchSnapshot();
-    })
+    });
 
-    it('renders a clicked folder', () => {
-    const wrapper = shallow(<BR><Folder match={{params: {folderId: 'id'}}}/></BR>)
+    // it('renders a clicked folder', () => {
+    //     const wrapper = shallow(<BR><Folder match={{params: {folderId: 'id'}}}/></BR>)
 
-        wrapper.find('Link').simulate('click');
-        expect(wrapper.find({match:{path:'link'}}).exists()).toBe(true);
-    })
-})
+    //     wrapper.find('Link').simulate('click');
+    //     expect(wrapper.find({match:{path:'link'}}).exists()).toBe(true);
+    // })
+});

@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewNoteForm component renders UI as expected 1`] = `
+<div>
+  <h2>
+    Create a note
+  </h2>
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      htmlFor="note-name"
+    >
+      Name
+    </label>
+    <input
+      aria-label="note-name"
+      aria-required="true"
+      id="name"
+      name="name"
+      required={true}
+      type="text"
+    />
+    <label
+      htmlFor="note-content"
+    >
+      Content
+    </label>
+    <input
+      aria-label="note-content"
+      aria-required="true"
+      id="content"
+      name="content"
+      required={true}
+      type="text"
+    />
+    <label
+      htmlFor="folder"
+    >
+      Folder
+    </label>
+    <select
+      aria-label="folder-selection"
+      aria-required="true"
+      id="folder-selection"
+      name="folder-selection"
+      onChange={[Function]}
+      required={true}
+    >
+      <option
+        value=""
+      >
+        Select one...
+      </option>
+    </select>
+    <button
+      type="submit"
+    >
+      Add Note
+    </button>
+  </form>
+</div>
+`;

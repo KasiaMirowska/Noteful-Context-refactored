@@ -14,7 +14,8 @@ describe('NoteList component', () => {
     it('renders the UI as expected', () => {
         expect(renderer.create(<BrowserRouter><NoteList match={{params:{folderId : 1}}}/></BrowserRouter>).toJSON()).toMatchSnapshot();
     });
-})
+});
+
 
 
   
