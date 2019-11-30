@@ -3,7 +3,7 @@ import NotefulContext from '../NotefulContext';
 import cuid from 'cuid';
 import APIcalls from '../API_service';
 import PropTypes from 'prop-types';
-
+import './NewNote.css';
 
 export default class NewNoteForm extends React.Component {
     static contextType = NotefulContext
@@ -26,10 +26,10 @@ export default class NewNoteForm extends React.Component {
             name: name.value,
             id: cuid(),
             content: content.value,
-            folderId: this.state.folderSelection,
-            modified: new Date().toDateString(),
+            folder: this.state.folderSelection,
+            date_created: new Date().toDateString(),
         }
-        
+    
         APIcalls.newNote(newNote)
         .then(data => {
             name.value = ''
@@ -39,6 +39,11 @@ export default class NewNoteForm extends React.Component {
             })
             this.context.addNewNote(data)
             this.props.history.push('/')
+        })
+        .catch(err => {
+            this.setState({
+                error: err.message,
+            })
         })
         
     }
@@ -52,10 +57,13 @@ export default class NewNoteForm extends React.Component {
             )
         })
         return(
-            <div>
-                {this.state.error && <h2>{this.state.error.message}</h2>}
-                <h2>Create a note</h2>
-                <form onSubmit={this.handleSubmit}>
+            <div className='note-list'>
+                {this.state.error && <h2 aria-label='error-message'>{this.state.error.message}</h2>}
+                <div className='noteList-header-container'>
+                <h2 className='noteList-header'>Create a note</h2>
+                </div>
+                <form clasName='form' onSubmit={this.handleSubmit}>
+                    <div className='input-fields'>
                     <label htmlFor='note-name'>Name</label>
                     <input
                         type='text' 
@@ -66,7 +74,7 @@ export default class NewNoteForm extends React.Component {
                         required
                         />
                     <label htmlFor='note-content'>Content</label>
-                    <input
+                    <textarea 
                         type='text' 
                         name='content'
                         id='content'
@@ -86,7 +94,10 @@ export default class NewNoteForm extends React.Component {
                         <option value=''>Select one...</option>
                         {folderSelection}
                     </select>
-                    <button type='submit'>Add Note</button>
+                    </div>
+                    <div className='button-field'>
+                    <button className='add' type='submit'>Add Note</button>
+                    </div>
                 </form>
             </div>
         )

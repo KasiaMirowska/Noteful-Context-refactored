@@ -17,33 +17,45 @@ export default class NewFolderForm extends React.Component {
             name: name.value,
             id: cuid(),
         }
-       
+
         APIcalls.newFolder(newFolder)
-        .then(data => {
-            name.value = ''
-            this.context.addNewFolder(data)
-            this.props.history.push('/')
-        })
-        
-        
+            .then(data => {
+                name.value = ''
+                this.context.addNewFolder(data)
+                this.props.history.push('/')
+            })
+            .catch(err => {
+                this.setState({
+                    error: err.message,
+                })
+            })
+
+
     }
 
-    render(){
-        return(
-            <div>
-                {this.state.error && <h2>{this.state.error.message}</h2>}
-                <h2>Create a folder</h2>
+    render() {
+        return (
+            <div className='note-list'>
+                {this.state.error && <h2 aria-label='error-message'>{this.state.error.message}</h2>}
+                <div className='noteList-header-container'>
+                    <h2 className='noteList-header'>Create a folder</h2>
+                </div>
                 <form onSubmit={this.handleSubmit}>
-                    <label htmlFor='folder-name'>Name</label>
-                    <input 
-                        type='text'
-                        name='name'
-                        id='name'
-                        aria-label='folder-name'
-                        aria-required='true'
-                        placeholder='enter name'>
-                    </input>
-                    <button type='submit'>Add Folder</button>
+                    <div className='input-fields'>
+                        <label htmlFor='folder-name'>Name</label>
+                        <input
+                            type='text'
+                            name='name'
+                            id='name'
+                            aria-label='folder-name'
+                            aria-required='true'
+                            required
+                           />
+                    </div>
+                    <div className='button-field'>
+                        <button type='submit'>Add Folder
+                        </button>
+                    </div>
                 </form>
             </div>
         )
@@ -68,7 +80,7 @@ NewFolderForm.propTypes = {
         path: PropTypes.string,
         url: PropTypes.string,
         isExact: PropTypes.boolean,
-        params : PropTypes.arrayOf(PropTypes.shape({
+        params: PropTypes.arrayOf(PropTypes.shape({
             path: PropTypes.string,
             url: PropTypes.string,
         }))

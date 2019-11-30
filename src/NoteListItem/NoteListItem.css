@@ -1,16 +1,29 @@
 .note {
-        flex-basis: 40%;
-        border: 1px solid lightgrey;
-        color:  rgb(28, 151, 28);
-        margin: 10px;
-        font-family: 'Raleway', sans-serif;
-        text-align: center;
+        background-color: rgb(250, 235, 214); 
+        /* background-color:  rgb(37, 37, 88); */
+        cursor: pointer; 
+        padding: 10px;
+        margin-bottom: 15px;
+     }
+     .li {
+        display: flex;
+        padding: 10px;
+     }
+     .note-info-container {
+         flex: 1.5;
+         height: auto;
+         /* text-align: center; */
+     }
+    .delete-button2 {
+        color: black;
+        background-color: rgb(250, 235, 214);
+         /* background-color:  rgb(37, 37, 88); */
+        font-size: 25px;
+    }  
+    .date {
+        display: block;
+        padding: 10px;
     }
-
-    .delete-button {
-        width: 30%;
-        font-family: 'Raleway', sans-serif;
-        font-size: 15px;
-        text-decoration: none;
-        padding: 15px;
-    }
+    
+        
+    

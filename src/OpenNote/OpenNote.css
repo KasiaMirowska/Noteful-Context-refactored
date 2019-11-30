@@ -1,27 +1,21 @@
-.open-view {
-    flex: 1;
-    flex-basis: 40%;
-    border: 1px solid lightgrey;
-    color:  rgb(28, 151, 28);
-    margin: 10px;
-    font-family: 'Raleway', sans-serif;
-    text-align: left;
-    padding-left: 15px;
-    padding: 15px;
-    /* padding-bottom: 3em; */
+.open-note {
+    color: black;
+    display: block;
+}
+.open-note2 {
+    color:rgb(150, 74, 3);
+}
+.openNote {
+    display: flex;
+    margin-bottom: 0;
+}
+.date {
+    color: black;
 }
 
-.content {
-    padding: 1em;
-  
-    text-align: -webkit-left;
-    margin: 10px;
-}
-.delete-button {
-    display: inline;
-    width: 30%;
-    font-family: 'Raleway', sans-serif;
-    font-size: 15px;
-    text-decoration: none;
-    padding: 15px;
+.content-container {
+    display: block;
+    background-color: rgb(158, 156, 154);
+    padding: 30px;
+    padding-bottom: 100px;
 }

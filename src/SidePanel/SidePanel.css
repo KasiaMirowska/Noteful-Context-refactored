@@ -1,26 +1,23 @@
-.side-panel {
-    flex: 1;
-    /* border-right: 2px solid grey; */
-    text-align: right;
-  
-    padding: 15px;
-    margin: 10px
+ .side-panel {
+    margin: 15px ;
+ }
+.folders-header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
-
-h2 {
+.folders-header {
     font-family: 'Barriecito', cursive;
     color: rgb(204, 80, 8);
-    padding-left: 20px;
+    padding: 10px; 
+    font-size: 2em;
 }
-ul {
-    list-style-type: none;
-}
-.side-button {
-    width: 30%;
-    font-family: 'Raleway', sans-serif;
-    font-size: 15px;
-    text-decoration: none;
-    padding: 15px;
-    margin: 10px;
-    cursor: pointer;
-  }
+ 
+@media (min-width: 600px) {
+    .side-panel {
+        flex: 1;
+        margin: 0;
+        /* border-right: solid rgb(23, 23, 56) 5px; */
+    }
+  }  
+

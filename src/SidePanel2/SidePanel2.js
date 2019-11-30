@@ -1,6 +1,6 @@
 import React from 'react';
 import NotefulContext from '../NotefulContext';
-import './ONSidePanel.css'
+import './SidePanel2.css'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -8,29 +8,33 @@ import PropTypes from 'prop-types';
 
 export default class SidePanel2 extends React.Component {
     static contextType = NotefulContext;
-    
+
     render() {
-        const note = this.context.notes.find(note => note.id === this.props.match.params.openNoteId);
-        if(note){
-            const openFolderId = note.folderId;
+        const note = this.context.notes.find(note => note.id === Number(this.props.match.params.openNoteId));
+
+        if (note) {
+            const openFolderId = note.folder;
             const openFolder = this.context.folders.find(folder => folder.id === openFolderId);
-        
-        return (
-            <div>
-                <h2>Note Folder: </h2>
-                <div className='ONside-panel'>
-                    <Link className='folder' to= {`/folder/${openFolderId}`} className="link"> 
-                        <h3>{openFolder.name}</h3>
+
+            return (
+                <div className='side-panel'>
+                    <div className='folders-header-container'>
+                        <a>
+                        <button type='button' className='side-button' onClick={() => this.props.history.goBack()}>Go back</button>
+                        </a>
+                        <h2 className='folders-header'>Note Folder</h2>
+                    </div>
+                    <div className='folder openNoteFolder'>
+                    <Link to={`/folder/${openFolderId}`} className='link'>{openFolder.name}
                     </Link>
-                </div>  
-                <button className='side-button' onClick={() => this.props.history.goBack()}>Go back</button>    
-            </div>
-        );
-    } else {
-        return null;
+                    </div>
+                </div>
+            );
+        } else {
+            return null;
+        }
     }
-}
-    
+
 }
 
 SidePanel2.propTypes = {
@@ -51,7 +55,7 @@ SidePanel2.propTypes = {
         path: PropTypes.string,
         url: PropTypes.string,
         isExact: PropTypes.boolean,
-        params : PropTypes.arrayOf(PropTypes.shape({
+        params: PropTypes.arrayOf(PropTypes.shape({
             path: PropTypes.string,
             url: PropTypes.string,
         }))

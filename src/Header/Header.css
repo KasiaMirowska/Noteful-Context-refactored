@@ -1,18 +1,19 @@
-header {
-    background-color: rgb(54, 54, 107); 
-    color: orange;
-    height: 120px;
-    font-family: 'Barriecito', cursive;
-    text-align: left;
-    
-    font-size: 30px;
-    /* padding-bottom: 10px; */
-}
-
-h1 {
-    margin: 0;
-    padding-left: 25%;
-    padding-top: 20px;
-}
-
+ .header-container {
+    color: rgb(204, 80, 8);
+    /* color: rgb(250, 235, 214); */
+    font-family: 'Barriecito', cursive; 
+    padding: 15px;
+    font-size: 2em;
+  }
+ header {
+   text-align: right;
+ }
+  @media (min-width: 600px) {
+    header {
+      width: 63%;
+      align-items: flex-end;
+      margin-left: auto; 
+      text-align: left;
+    }
+  }  
 

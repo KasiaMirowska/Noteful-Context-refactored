@@ -1,8 +1,9 @@
+import config from './config';
+
 const APIcalls = {
 
     getFoldersData: () => {
-        const foldersURL = 'http://localhost:9090/folders/';
-    
+        const foldersURL = 'http://localhost:8000/api/noteful/folder'
         return fetch(foldersURL)
         .then(res => {
         if(!res.ok){
@@ -10,13 +11,11 @@ const APIcalls = {
         }
         return res;
         })
-        .then(res => res.json())
-        
+        .then(res => res.json()) 
     },
 
     getNotesData: () => {
-    const notesURL = 'http://localhost:9090/notes/';
-    
+    const notesURL = 'http://localhost:8000/api/noteful/notes';
     return fetch(notesURL)
     .then(res => {
       if(!res.ok){
@@ -25,14 +24,14 @@ const APIcalls = {
       return res;
     })
     .then(res => res.json())
-    
     },
+    
 
-    deleteNoteRequest: (noteId) => {
-      const notesURL = 'http://localhost:9090/notes';
+    deleteNoteRequest: (noteId, callback) => {
+      const notesURL = config.API_ENDPOINT + '/notes';
       
       return fetch(notesURL + `/${noteId}/`, {
-          method: 'DELETE'
+          method: 'DELETE',
       })
       .then(res => {
           if(!res.ok) {
@@ -40,15 +39,16 @@ const APIcalls = {
                   throw error
               })
           }
-          return res.json()
-      })  
+          return 
+      }) 
+     
   },
 
-    deleteFolderRequest: (folderId, callback) => {
-        const url = 'http://localhost:9090/folders'
+    deleteFolderRequest: (folderId) => {
+        const url = config.API_ENDPOINT + '/folder'
         
         return fetch(url + `/${folderId}`, {
-            method: 'DELETE',
+            method: 'DELETE', 
         })
         .then(res => {
             if(!res.ok) {
@@ -56,12 +56,12 @@ const APIcalls = {
                     throw error
                 })
             }
-            return res.json()
+            return 
         })
     },
 
     newFolder: (newFolder) => {
-        const url = `http://localhost:9090/folders/`
+        const url = config.API_ENDPOINT + '/folder'
         return fetch(url, {
             method: 'POST',
             body: JSON.stringify(newFolder),
@@ -80,7 +80,7 @@ const APIcalls = {
     },
 
     newNote: (newNote) => {
-        const url = `http://localhost:9090/notes/`
+        const url = config.API_ENDPOINT + '/notes'
         return fetch(url, {
             method: 'POST',
             body: JSON.stringify(newNote),

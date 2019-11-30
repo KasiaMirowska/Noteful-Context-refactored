@@ -1,0 +1,15 @@
+.side-panel3 {
+   text-align: right;
+   
+}
+.panel3 {
+    margin-right: 30px;
+}
+
+
+@media (min-width: 600px) {
+    .side-panel3 {
+        flex: 1;
+        margin: 0;
+    }
+  }  

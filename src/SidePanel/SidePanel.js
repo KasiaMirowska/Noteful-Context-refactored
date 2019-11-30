@@ -17,16 +17,22 @@ export default class SidePanel extends React.Component {
                     />
         })
         return (
-            <div className='folder'>
-                <h2>Note Folders</h2>
+            <div className='side-panel'>
+                <div className='folders-header-container'>
+                
+                <Link to='/newFolder' className="link">
+                    <button 
+                        className='add-folder'
+                        type='button'>
+                            Add Folder
+                    </button>
+                </Link>
+                <h2 className='folders-header'>Note Folders</h2>
+                </div>
                 <React.Fragment>
                 {folders}
                 </React.Fragment>
-                <Link to='/newFolder'>
-                    <button type='button' className='side-button'>
-                        Add Folder
-                    </button>
-                </Link>
+                
             </div>
         )
     };  

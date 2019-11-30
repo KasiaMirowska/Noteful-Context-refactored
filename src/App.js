@@ -6,7 +6,7 @@ import Header from './Header/Header';
 import SidePanel from './SidePanel/SidePanel';
 import NoteList from './NoteList/NoteList';
 import OpenNote from './OpenNote/OpenNote';
-import SidePanel2 from './OpenNoteSidePanel/SidePanel2';
+import SidePanel2 from './SidePanel2/SidePanel2';
 import SidePanel3 from './SidePanel3/SidePanel3';
 import NewFolderForm from './NewFolderForm/NewFolderForm';
 import NewNoteForm from './NewNote/NewNoteForm';
@@ -25,7 +25,9 @@ export default class App extends React.Component {
   }
   
   deleteFolder = (folderId) => {
+    
     const newFolders = this.state.folders.filter(folder => folder.id !== folderId)
+    console.log(folderId, newFolders, 'MMMMMMMMMMMMMMMM')
     this.setState({
       folders: newFolders,
     })
@@ -33,23 +35,36 @@ export default class App extends React.Component {
   
   deleteNote = (noteId) => {
     const newNotes = this.state.notes.filter(note => note.id !== noteId)
+    console.log(newNotes, 'hhhhhhhhhhhhhhh')
     this.setState({
       notes: newNotes,
     })
   }
 
-  deleteNoteRequest = (noteId, callback) => {
-    APIcalls.deleteNoteRequest(noteId, callback)
-    .then(data => {
-      callback(noteId) 
+  deleteNoteRequest = (noteId) => {
+    APIcalls.deleteNoteRequest(noteId)
+    .then(res => {
+      console.log('HERE??????????')
+      this.deleteNote(noteId) 
   })
+    .catch(err => {
+      this.setState({
+        error: err.message,
+      })
+    })
   }  
   
   componentDidMount() {
     APIcalls.getFoldersData()
     .then(serverData => {
+      console.log(serverData)
       this.setState({
         folders: serverData
+      })
+    })
+    .catch(err => {
+      this.setState({
+        error: err.message,
       })
     })
     
@@ -59,6 +74,12 @@ export default class App extends React.Component {
         notes: serverData
       })
     })
+    .catch(err => {
+      this.setState({
+        error: err.message,
+      })
+    })
+    
   }
 
   addNewFolder = (newFolder)=> {
@@ -93,7 +114,7 @@ export default class App extends React.Component {
             <Link to={'/'} className='link' aria-label="Noteful">
               <Header />
             </Link>
-            <h3 aria-label='error-message'>{this.state.error}</h3>
+            {this.state.error && <h2 aria-label='error-message'>{this.state.error.message}</h2>}
             <div className='main'>
            
               <Route exact path='/' component={SidePanel} />
@@ -102,14 +123,14 @@ export default class App extends React.Component {
               <Route path='/folder' component={SidePanel} />
               <Route exact path='/folder/:folderId' component={NoteList} />
           
-              <Route path='/openNote/:openNoteId' component={SidePanel2} />
-              <Route path='/openNote/:openNoteId' component={OpenNote} />
+              <Route exact path='/notes/:openNoteId' component={SidePanel2} />
+              <Route exact path='/notes/:openNoteId' component={OpenNote} />
 
-              <Route path='/newFolder' component={SidePanel3} />
-              <Route path='/newFolder' component={NewFolderForm} /> 
+              <Route exact path='/newFolder' component={SidePanel3} />
+              <Route exact path='/newFolder' component={NewFolderForm} /> 
 
-              <Route path='/newNote' component={SidePanel3} />
-              <Route path='/newNote' component={NewNoteForm} />
+              <Route exact path='/newNote' component={SidePanel3} />
+              <Route exact path='/newNote' component={NewNoteForm} />
             </div>
           </Errors> 
         </NotefulContext.Provider>
