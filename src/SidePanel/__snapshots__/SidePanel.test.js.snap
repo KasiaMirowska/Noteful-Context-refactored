@@ -2,21 +2,28 @@
 
 exports[`SidePanel component renders the UI as expected 1`] = `
 <div
-  className="folder"
+  className="side-panel"
 >
-  <h2>
-    Note Folders
-  </h2>
-  <a
-    href="/newFolder"
-    onClick={[Function]}
+  <div
+    className="folders-header-container"
   >
-    <button
-      className="side-button"
-      type="button"
+    <a
+      className="link"
+      href="/newFolder"
+      onClick={[Function]}
     >
-      Add Folder
-    </button>
-  </a>
+      <button
+        className="add-folder"
+        type="button"
+      >
+        Add Folder
+      </button>
+    </a>
+    <h2
+      className="folders-header"
+    >
+      Note Folders
+    </h2>
+  </div>
 </div>
 `;

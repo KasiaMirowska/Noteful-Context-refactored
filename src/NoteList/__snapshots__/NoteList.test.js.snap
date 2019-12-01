@@ -4,18 +4,24 @@ exports[`NoteList component renders the UI as expected 1`] = `
 <div
   className="note-list"
 >
-  <h2>
-    Notes
-  </h2>
-  <a
-    href="/newNote"
-    onClick={[Function]}
+  <div
+    className="noteList-header-container"
   >
-    <button
-      className="add-note"
+    <h2
+      className="noteList-header"
     >
-      Add Note
-    </button>
-  </a>
+      Notes
+    </h2>
+    <a
+      href="/newNote"
+      onClick={[Function]}
+    >
+      <button
+        className="add-note"
+      >
+        Add Note
+      </button>
+    </a>
+  </div>
 </div>
 `;

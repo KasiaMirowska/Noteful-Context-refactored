@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 // import Errors from './Errors'
-
+console.log(process.env);
 
 ReactDOM.render(
     // <Errors>

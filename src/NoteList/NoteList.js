@@ -50,24 +50,24 @@ export default class NoteList extends React.Component {
 
 }
 NoteList.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.shape({
+  history: PropTypes.objectOf(PropTypes.shape({
     length: PropTypes.number,
     action: PropTypes.string,
     location: PropTypes.object,
-    createHref: PropTypes.func,
-    push: PropTypes.func,
+    createHref: PropTypes.object,
+    push: PropTypes.object,
   })),
-  location: PropTypes.arrayOf(PropTypes.shape({
+  location: PropTypes.objectOf(PropTypes.shape({
     pathname: PropTypes.string,
     search: PropTypes.string,
     hash: PropTypes.string,
     key: PropTypes.string,
   })),
-  match: PropTypes.arrayOf(PropTypes.shape({
+  match: PropTypes.objectOf(PropTypes.shape({
     path: PropTypes.string,
     url: PropTypes.string,
     isExact: PropTypes.boolean,
-    params: PropTypes.arrayOf(PropTypes.shape({
+    params: PropTypes.objectOf(PropTypes.shape({
       path: PropTypes.string,
       url: PropTypes.string,
     }))

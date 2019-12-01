@@ -7,8 +7,9 @@ import PropTypes from 'prop-types';
 
 export default class SidePanel extends React.Component {
     static contextType = NotefulContext;
-
+   
     render(){
+       console.log(this.props)
         const folders = this.context.folders.map(folder => {
             return <Folder 
                     key={folder.id}
@@ -39,24 +40,24 @@ export default class SidePanel extends React.Component {
 };
 
 SidePanel.propTypes = {
-    history: PropTypes.arrayOf(PropTypes.shape({
-        length: PropTypes.number,
+    history: PropTypes.objectOf(PropTypes.shape({
+        length: PropTypes.string,
         action: PropTypes.string,
         location: PropTypes.object,
-        createHref: PropTypes.func,
-        push: PropTypes.func,
+        createHref: PropTypes.object,
+        push: PropTypes.object,
     })),
-    location: PropTypes.arrayOf(PropTypes.shape({
+    location: PropTypes.objectOf(PropTypes.shape({
         pathname: PropTypes.string,
         search: PropTypes.string,
         hash: PropTypes.string,
         key: PropTypes.string,
     })),
-    match: PropTypes.arrayOf(PropTypes.shape({
+    match: PropTypes.objectOf(PropTypes.shape({
         path: PropTypes.string,
         url: PropTypes.string,
         isExact: PropTypes.boolean,
-        params : PropTypes.arrayOf(PropTypes.shape({
+        params : PropTypes.objectOf(PropTypes.shape({
             path: PropTypes.string,
             url: PropTypes.string,
         }))
