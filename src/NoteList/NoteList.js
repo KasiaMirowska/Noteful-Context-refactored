@@ -54,8 +54,8 @@ NoteList.propTypes = {
     length: PropTypes.number,
     action: PropTypes.string,
     location: PropTypes.object,
-    createHref: PropTypes.object,
-    push: PropTypes.object,
+    createHref: PropTypes.func,
+    push: PropTypes.func,
   }),
   location: PropTypes.shape({
     pathname: PropTypes.string,
@@ -66,10 +66,10 @@ NoteList.propTypes = {
   match: PropTypes.shape({
     path: PropTypes.string,
     url: PropTypes.string,
-    isExact: PropTypes.boolean,
-    params: PropTypes.objectOf(PropTypes.shape({
+    isExact: PropTypes.bool,
+    params: PropTypes.shape({
       path: PropTypes.string,
       url: PropTypes.string,
-    }))
+    })
   }),
 }
