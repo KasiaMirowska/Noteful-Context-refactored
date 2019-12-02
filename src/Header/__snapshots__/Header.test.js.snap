@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header component renders UI as expected 1`] = `
-<div>
+<div
+  className="header-container"
+>
   <header>
     <h1>
       NOTEFUL

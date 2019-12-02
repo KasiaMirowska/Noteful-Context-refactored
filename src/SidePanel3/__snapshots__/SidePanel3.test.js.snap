@@ -1,8 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SidePanel3 renders the UI as expected 1`] = `
-<div>
+<div
+  className="side-panel3"
+>
   <button
+    className="panel3"
     onClick={[Function]}
     type="button"
   >

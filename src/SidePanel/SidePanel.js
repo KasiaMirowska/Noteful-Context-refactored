@@ -40,27 +40,28 @@ export default class SidePanel extends React.Component {
 };
 
 SidePanel.propTypes = {
-    history: PropTypes.objectOf(PropTypes.shape({
-        length: PropTypes.string,
+    //propTypes.objectOf(PropTypes.shape) this assumes that all objects recieved are exactly the same
+    history: PropTypes.shape({
+        length: PropTypes.number,
         action: PropTypes.string,
         location: PropTypes.object,
-        createHref: PropTypes.object,
-        push: PropTypes.object,
-    })),
-    location: PropTypes.objectOf(PropTypes.shape({
+        createHref: PropTypes.func,
+        push: PropTypes.func,
+    }),
+    location: PropTypes.shape({
         pathname: PropTypes.string,
         search: PropTypes.string,
         hash: PropTypes.string,
         key: PropTypes.string,
-    })),
-    match: PropTypes.objectOf(PropTypes.shape({
+    }),
+    match: PropTypes.shape({
         path: PropTypes.string,
         url: PropTypes.string,
-        isExact: PropTypes.boolean,
-        params : PropTypes.objectOf(PropTypes.shape({
+        isExact: PropTypes.bool,
+        params : PropTypes.shape({
             path: PropTypes.string,
             url: PropTypes.string,
-        }))
-    })),
+        })
+    }),
 }
 
