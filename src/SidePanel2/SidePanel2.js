@@ -38,26 +38,26 @@ export default class SidePanel2 extends React.Component {
 }
 
 SidePanel2.propTypes = {
-    history: PropTypes.arrayOf(PropTypes.shape({
+    history: PropTypes.shape({
         length: PropTypes.number,
         action: PropTypes.string,
         location: PropTypes.object,
         createHref: PropTypes.func,
         push: PropTypes.func,
-    })),
-    location: PropTypes.arrayOf(PropTypes.shape({
+    }),
+    location: PropTypes.shape({
         pathname: PropTypes.string,
         search: PropTypes.string,
         hash: PropTypes.string,
         key: PropTypes.string,
-    })),
-    match: PropTypes.arrayOf(PropTypes.shape({
+    }),
+    match: PropTypes.shape({
         path: PropTypes.string,
         url: PropTypes.string,
-        isExact: PropTypes.boolean,
-        params: PropTypes.arrayOf(PropTypes.shape({
+        isExact: PropTypes.bool,
+        params: PropTypes.shape({
             path: PropTypes.string,
             url: PropTypes.string,
-        }))
-    })),
+        })
+    }),
 }
