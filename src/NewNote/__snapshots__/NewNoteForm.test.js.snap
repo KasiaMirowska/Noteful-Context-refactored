@@ -14,7 +14,7 @@ exports[`NewNoteForm component renders UI as expected 1`] = `
     </h2>
   </div>
   <form
-    clasName="form"
+    className="form"
     onSubmit={[Function]}
   >
     <div
