@@ -62,7 +62,7 @@ export default class NewNoteForm extends React.Component {
                 <div className='noteList-header-container'>
                 <h2 className='noteList-header'>Create a note</h2>
                 </div>
-                <form clasName='form' onSubmit={this.handleSubmit}>
+                <form className='form' onSubmit={this.handleSubmit}>
                     <div className='input-fields'>
                     <label htmlFor='note-name'>Name</label>
                     <input
