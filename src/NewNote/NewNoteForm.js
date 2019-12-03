@@ -122,9 +122,9 @@ NewNoteForm.propTypes = {
         path: PropTypes.string,
         url: PropTypes.string,
         isExact: PropTypes.bool,
-        params : PropTypes.arrayOf(PropTypes.shape({
+        params : PropTypes.shape({
             path: PropTypes.string,
             url: PropTypes.string,
-        }))
+        })
     }),
 }

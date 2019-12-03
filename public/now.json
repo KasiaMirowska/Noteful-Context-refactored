@@ -2,14 +2,7 @@
     "version": 2,
     "alias": "kasia-noteful-app-client",
     "name": "noteful-app-client",
-    "routes": [
-        {
-          "src": "^/static/(.*)",
-          "dest": "/static/$1"
-        },
-        {
-          "src": ".*",
-          "dest": "/index.html"
-        }
-      ]
+    "routes": [  
+        { "handle": "filesystem" }, 
+        { "src": "/.*", "dest": "/index.html" } ]
   }
