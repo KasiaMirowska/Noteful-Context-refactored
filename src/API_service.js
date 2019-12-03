@@ -28,7 +28,7 @@ const APIcalls = {
     
 
     deleteNoteRequest: (noteId, callback) => {
-      const notesURL = config.API_ENDPOINT + '/notes';
+      const notesURL = 'http://localhost:8000/api/noteful/notes';
       
       return fetch(notesURL + `/${noteId}/`, {
           method: 'DELETE',
@@ -45,7 +45,7 @@ const APIcalls = {
   },
 
     deleteFolderRequest: (folderId) => {
-        const url = config.API_ENDPOINT + '/folder'
+        const url = 'http://localhost:8000/api/noteful/folder'
         
         return fetch(url + `/${folderId}`, {
             method: 'DELETE', 
@@ -61,7 +61,8 @@ const APIcalls = {
     },
 
     newFolder: (newFolder) => {
-        const url = config.API_ENDPOINT + '/folder'
+        const url = 'http://localhost:8000/api/noteful/folder'
+        console.log(url)
         return fetch(url, {
             method: 'POST',
             body: JSON.stringify(newFolder),
@@ -80,7 +81,7 @@ const APIcalls = {
     },
 
     newNote: (newNote) => {
-        const url = config.API_ENDPOINT + '/notes'
+        const url = 'http://localhost:8000/api/noteful/notes'
         return fetch(url, {
             method: 'POST',
             body: JSON.stringify(newNote),
